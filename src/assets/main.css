@@ -1,17 +1,32 @@
 body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  background: black;
+  background: rgb(9, 4, 33);
+  margin: 0;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   color: white;
 }
 
+.container {
+  max-width: 800px;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 ul {
   padding-left: 0;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  width: 100%; 
 }
 
 li {
@@ -20,20 +35,14 @@ li {
   transition: all 0.3s ease;
 }
 
-.container {
-  max-width: 100%;
-  padding: 2em;
-}
-
-.wrapper {
-  
-}
-
 .card {
   display: block;
   width: 150px;
   height: 175px;
   padding: 80px 50px;
+  /* background-image: url('./img/bgj.jpg');
+  background-size: cover;
+  background-position: center; */
   background-color: #51aae5;
   border-radius: 7px;
   margin: 5px;
@@ -44,9 +53,6 @@ li {
   color: #fff;
   font-weight: 600;
   font-size: 20px;
-  /* -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
-  -moz-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5); */
-  box-shadow: 9px 10px 22px -8px rgba(255, 255, 255, 0.5);
   will-change: transform;
 }
 

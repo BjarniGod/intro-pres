@@ -16,6 +16,45 @@
 </template>
 
 <script>
+import { Flipper, Flipped } from "vue-flip-toolkit";
+
+export default {
+  components: {
+    Flipped,
+    Flipper
+  },
+  data() {
+    return {
+      cards: cards,
+      newFront: '',
+      newBack: '',
+      error: false
+    };
+  },
+  methods: {
+    toggleCard(card) {
+      card.flipped = !card.flipped;
+    },
+    addNew() {
+      if (!this.newFront || !this.newBack) {
+        this.error = true;
+      } else {
+        this.cards.push({
+          front: this.newFront,
+          back: this.newBack,
+          flipped: false
+        });
+        this.newFront = '';
+        this.newBack = '';
+        this.error = false;
+      }
+    },
+    deleteCard(index) {
+      this.cards.splice(index, 1);
+    }
+  }
+};
+
 const cards = [
     {
       front: 'Portrait',
@@ -69,71 +108,45 @@ const cards = [
       flipped: false,
     },
 ]; 
-
-export default {
-  data() {
-    return {
-      cards: cards,
-      newFront: '',
-      newBack: '',
-      error: false
-    };
-  },
-  methods: {
-    toggleCard(card) {
-      card.flipped = !card.flipped;
-    },
-    addNew() {
-      if (!this.newFront || !this.newBack) {
-        this.error = true;
-      } else {
-        this.cards.push({
-          front: this.newFront,
-          back: this.newBack,
-          flipped: false
-        });
-        this.newFront = '';
-        this.newBack = '';
-        this.error = false;
-      }
-    },
-    deleteCard(index) {
-      this.cards.splice(index, 1);
-    }
-  }
-};
 </script>
 
-<style>
+
+<!-- <style>
 body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  background: black;
+  background: rgb(9, 4, 33);
+  margin: 0;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   color: white;
 }
 
+.container {
+  max-width: 800px;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 ul {
   padding-left: 0;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  width: 100%; 
 }
 
 li {
   list-style-type: none;
   padding: 10px 10px;
   transition: all 0.3s ease;
-}
-
-.container {
-  max-width: 100%;
-  padding: 2em;
-}
-
-.wrapper {
-  
 }
 
 .card {
@@ -151,9 +164,9 @@ li {
   color: #fff;
   font-weight: 600;
   font-size: 20px;
-  -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
+  /* -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
   -moz-box-shadow: 9px 10px 22px -8px rgba(209,193,209,.5);
-  box-shadow: 9px 10px 22px -8px rgba(255, 255, 255, 0.5);
+  box-shadow: 9px 10px 22px -8px rgba(255, 255, 255, 0.5); */
   will-change: transform;
 }
 
@@ -256,4 +269,5 @@ button:hover{
   font-weight: 600;
 }
 
-</style>
+
+</style> -->
