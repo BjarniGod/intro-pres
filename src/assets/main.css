@@ -36,27 +36,52 @@ li {
 }
 
 .card {
-  display: block;
   width: 150px;
   height: 175px;
   padding: 80px 50px;
-  /* background-image: url('./img/bgj.jpg');
-  background-size: cover;
-  background-position: center; */
-  background-color: #51aae5;
   border-radius: 7px;
   margin: 5px;
-  text-align: center;
-  line-height: 27px;
   cursor: pointer;
   position: relative;
+  will-change: transform;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
   font-weight: 600;
   font-size: 20px;
-  will-change: transform;
+  transition: all 0.6s ease;
 }
 
-li:hover{
+.card.full-screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  border-radius: 7px;
+  transition: all 0.6s ease;
+}
+
+.card.full-screen.is-expanded {
+  width: 80vw;
+  height: 80vh;
+  border-radius: 7px;
+}
+
+.card.front {
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card.back {
+  background-color: #51aae5; /* Your preferred back color */
+  text-align: center;
+  line-height: 27px;
+}
+
+.card.front:hover{
   transform: scale(1.1);
 }
 
@@ -83,20 +108,6 @@ li:nth-child(4n+4) .card{
 li:nth-child(-7n+7) .card{
   background-color: #e46055;
   }
-
-.delete-card {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 10px 15px;
-  opacity: .4;
-  transition: all 0.5s ease;
-}
-
-.delete-card:hover, .error {
-  opacity: 1;
-  transform: rotate(360deg);
-}
 
 .flip-enter-active {
   transition: all 0.4s ease;
