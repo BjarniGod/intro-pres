@@ -1,3 +1,12 @@
+.color-1 { background-color: #e65f51; }
+.color-2 { background-color: #a17de9; }
+.color-3 { background-color: #feca34; }
+.color-4 { background-color: #51aae5; }
+.color-5 { background-color: #feca34; }
+.color-6 { background-color: #e46055; }
+.default-color { background-color: #51aae5; }
+
+
 body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -53,20 +62,25 @@ li {
   transition: all 0.6s ease;
 }
 
-.card.full-screen {
+.expanded-card-overlay {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  border-radius: 7px;
-  transition: all 0.6s ease;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.card.full-screen.is-expanded {
-  width: 80vw;
-  height: 80vh;
-  border-radius: 7px;
+.expanded-card-content {
+  /* background-color: white; */
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  height: 80%;
+  overflow: auto;
 }
 
 .card.front {
@@ -77,7 +91,7 @@ li {
 }
 
 .card.back {
-  background-color: #51aae5; /* Your preferred back color */
+  /* background-color: #51aae5; */
   text-align: center;
   line-height: 27px;
 }

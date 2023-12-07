@@ -2,40 +2,38 @@
   <div id="flashcard-app" class="container">
     <h1>Bjarni Guðmann Jónsson</h1>
     <ul class="flashcard-list">
-      <li v-for="(card, index) in cards" :key="index" v-on:click="toggleCard(card)">
-        <transition name="flip">
-          <div v-if="card.flipped" class="card back full-screen" :class="{ 'is-expanded': card.isExpanded }">{{ card.back }}</div>
-          <!-- <div v-else class="card front" :style="{ backgroundImage: 'url(' + card.imageUrl + ')' }"></div> -->
-          <div v-else class="card front">{{ card.front }}</div>
-        </transition>
+    <li v-for="(card, index) in cards" :key="index" @click="toggleCard(card, index)">
+        <div v-if="card.flipped" class="card back">{{ card.back }}</div>
+        <div v-else class="card front">{{ card.front }}</div>
       </li>
     </ul>
+    <expanded-card v-if="selectedCard" :card="selectedCard" :index="selectedIndex" @close="selectedCard = null"></expanded-card>
   </div>
 </template>
 
-
-
-
 <script>
 import { VueFlip } from 'vue-flip';
+import ExpandedCard from './ExpandedCard.vue';
 
 export default {
   components: {
-    'vue-flip': VueFlip
+    'vue-flip': VueFlip,
+    ExpandedCard
   },
   data() {
     return {
-      cards: cards
+      cards: cards,
+      selectedCard: null,
+      selectedIndex: null
     };
   },
-  methods: {
-    toggleCard(card) {
-    card.flipped = !card.flipped;
-    this.$nextTick(() => {
-      card.isExpanded = card.flipped;
-    });
-  },
+methods: {
+  toggleCard(card, index) {
+    this.selectedCard = card;
+    this.selectedIndex = index;
   }
+}
+
 };
 
 const cards = [
