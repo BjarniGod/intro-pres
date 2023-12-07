@@ -5,7 +5,8 @@
       <li v-for="(card, index) in cards" :key="index" v-on:click="toggleCard(card)">
         <transition name="flip">
           <div v-if="card.flipped" class="card back full-screen" :class="{ 'is-expanded': card.isExpanded }">{{ card.back }}</div>
-          <div v-else class="card front" :style="{ backgroundImage: 'url(' + card.imageUrl + ')' }"></div>
+          <!-- <div v-else class="card front" :style="{ backgroundImage: 'url(' + card.imageUrl + ')' }"></div> -->
+          <div v-else class="card front">{{ card.front }}</div>
         </transition>
       </li>
     </ul>
@@ -24,33 +25,16 @@ export default {
   },
   data() {
     return {
-      cards: cards,
-      newFront: '',
-      newBack: '',
-      error: false
+      cards: cards
     };
   },
   methods: {
     toggleCard(card) {
     card.flipped = !card.flipped;
     this.$nextTick(() => {
-      card.isExpanded = card.flipped; // Expand the card if it is flipped
+      card.isExpanded = card.flipped;
     });
   },
-    addNew() {
-      if (!this.newFront || !this.newBack) {
-        this.error = true;
-      } else {
-        this.cards.push({
-          front: this.newFront,
-          back: this.newBack,
-          flipped: false
-        });
-        this.newFront = '';
-        this.newBack = '';
-        this.error = false;
-      }
-    },
   }
 };
 
@@ -118,4 +102,3 @@ const cards = [
     },
 ]; 
 </script>
-ç
