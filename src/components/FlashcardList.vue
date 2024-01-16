@@ -12,12 +12,10 @@
 </template>
 
 <script>
-import { VueFlip } from 'vue-flip';
 import ExpandedCard from './ExpandedCard.vue';
 
 export default {
   components: {
-    'vue-flip': VueFlip,
     ExpandedCard
   },
   data() {
